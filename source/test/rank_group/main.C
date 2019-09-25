@@ -3,7 +3,7 @@
  * This file is part of the SAMRAI distribution.  For full copyright
  * information, see COPYRIGHT and LICENSE.
  *
- * Copyright:     (c) 1997-2018 Lawrence Livermore National Security, LLC
+ * Copyright:     (c) 1997-2019 Lawrence Livermore National Security, LLC
  * Description:   Test program for RankGroup with TreeLoadBalancer.
  *
  ************************************************************************/
@@ -203,7 +203,7 @@ int main(
       if (main_db->isInteger("min_size")) {
          main_db->getIntegerArray("min_size", &min_size[0], dimval);
       }
-      hier::IntVector max_size(dim, INT_MAX);
+      hier::IntVector max_size(dim, tbox::MathUtilities<int>::getMax());
       if (main_db->isInteger("max_size")) {
          main_db->getIntegerArray("max_size", &max_size[0], dimval);
       }

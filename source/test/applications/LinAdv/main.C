@@ -3,7 +3,7 @@
  * This file is part of the SAMRAI distribution.  For full copyright
  * information, see COPYRIGHT and LICENSE.
  *
- * Copyright:     (c) 1997-2018 Lawrence Livermore National Security, LLC
+ * Copyright:     (c) 1997-2019 Lawrence Livermore National Security, LLC
  * Description:   Main program for SAMRAI Linear Advection example problem.
  *
  ************************************************************************/
@@ -54,7 +54,7 @@
 #include <unistd.h>
 #endif
 
-#ifdef HAVE_CONDUIT
+#ifdef SAMRAI_HAVE_CONDUIT
 #include "conduit_blueprint.hpp"
 #endif
 
@@ -287,7 +287,7 @@ int main(
          const bool viz_dump_data = (viz_dump_interval > 0);
 
          bool write_blueprint = false;
-#ifdef HAVE_CONDUIT
+#ifdef SAMRAI_HAVE_CONDUIT
          write_blueprint =
             main_db->getBoolWithDefault("write_blueprint", false);
 #endif
@@ -309,7 +309,7 @@ int main(
             }
          }
 
-#if (TESTING == 1) && !(HAVE_HDF5)
+#if (TESTING == 1) && !defined(HAVE_HDF5)
          /*
           * If we are autotesting on a system w/o HDF5, the read from
           * restart will result in an error.  We want this to happen
@@ -532,7 +532,7 @@ int main(
 
             if (write_blueprint && viz_dump_interval) {
                if ((iteration_num % viz_dump_interval) == 0) {
-#ifdef HAVE_CONDUIT
+#ifdef SAMRAI_HAVE_CONDUIT
                   std::shared_ptr<tbox::ConduitDatabase> conduit_db(
                      new tbox::ConduitDatabase("conduit_hierarchy"));
  

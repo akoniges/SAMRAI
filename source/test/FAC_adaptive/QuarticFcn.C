@@ -3,14 +3,14 @@
  * This file is part of the SAMRAI distribution.  For full copyright
  * information, see COPYRIGHT and LICENSE.
  *
- * Copyright:     (c) 1997-2018 Lawrence Livermore National Security, LLC
+ * Copyright:     (c) 1997-2019 Lawrence Livermore National Security, LLC
  * Description:   Quartic function functor.
  *
  ************************************************************************/
 #include "SAMRAI/SAMRAI_config.h"
 
 #include "QuarticFcn.h"
-#include IOSTREAM_HEADER_FILE
+#include <iostream>
 #include "SAMRAI/tbox/Utilities.h"
 
 /*

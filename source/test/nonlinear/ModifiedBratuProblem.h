@@ -3,7 +3,7 @@
  * This file is part of the SAMRAI distribution.  For full copyright
  * information, see COPYRIGHT and LICENSE.
  *
- * Copyright:     (c) 1997-2018 Lawrence Livermore National Security, LLC
+ * Copyright:     (c) 1997-2019 Lawrence Livermore National Security, LLC
  * Description:   Class containing numerical routines for modified Bratu problem
  *
  ************************************************************************/
@@ -242,8 +242,6 @@ public:
       solv::SundialsAbstractVector* soln_scale,
       solv::SundialsAbstractVector* fval,
       solv::SundialsAbstractVector* fval_scale,
-      solv::SundialsAbstractVector* vtemp1,
-      solv::SundialsAbstractVector* vtemp2,
       int& num_feval);
 
    int
@@ -253,7 +251,6 @@ public:
       solv::SundialsAbstractVector* fval,
       solv::SundialsAbstractVector* fval_scale,
       solv::SundialsAbstractVector* rhs,
-      solv::SundialsAbstractVector* vtemp,
       int& num_feval);
 
    int

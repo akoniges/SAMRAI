@@ -3,7 +3,7 @@
  * This file is part of the SAMRAI distribution.  For full copyright
  * information, see COPYRIGHT and LICENSE.
  *
- * Copyright:     (c) 1997-2018 Lawrence Livermore National Security, LLC
+ * Copyright:     (c) 1997-2019 Lawrence Livermore National Security, LLC
  * Description:   Interface to user-specified functions for CVODE package
  *
  ************************************************************************/
@@ -80,10 +80,7 @@ public:
       SundialsAbstractVector* fy,
       int jok,
       int* jcurPtr,
-      double gamma,
-      SundialsAbstractVector* vtemp1,
-      SundialsAbstractVector* vtemp2,
-      SundialsAbstractVector* vtemp3) = 0;
+      double gamma) = 0;
 
    /**
     * User-supplied function for setting up the preconditioner
@@ -99,8 +96,7 @@ public:
       SundialsAbstractVector* z,
       double gamma,
       double delta,
-      int lr,
-      SundialsAbstractVector* vtemp) = 0;
+      int lr) = 0;
 
 };
 

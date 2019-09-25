@@ -3,7 +3,7 @@
  * This file is part of the SAMRAI distribution.  For full copyright
  * information, see COPYRIGHT and LICENSE.
  *
- * Copyright:     (c) 1997-2018 Lawrence Livermore National Security, LLC
+ * Copyright:     (c) 1997-2019 Lawrence Livermore National Security, LLC
  * Description:   Example demonstrating use of CVODE vectors.
  *
  ************************************************************************/
@@ -380,10 +380,7 @@ public:
       SundialsAbstractVector* fy,
       int jok,
       int* jcurPtr,
-      double gamma,
-      SundialsAbstractVector* vtemp1,
-      SundialsAbstractVector* vtemp2,
-      SundialsAbstractVector* vtemp3);
+      double gamma);
 
    virtual int
    CVSpgmrPrecondSolve(
@@ -394,8 +391,7 @@ public:
       SundialsAbstractVector* z,
       double gamma,
       double delta,
-      int lr,
-      SundialsAbstractVector* vtemp);
+      int lr);
 
 /*************************************************************************
  *

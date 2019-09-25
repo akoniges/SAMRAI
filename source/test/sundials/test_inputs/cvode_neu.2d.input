@@ -3,7 +3,7 @@
  * This file is part of the SAMRAI distribution.  For full copyright 
  * information, see COPYRIGHT and LICENSE. 
  *
- * Copyright:     (c) 1997-2018 Lawrence Livermore National Security, LLC
+ * Copyright:     (c) 1997-2019 Lawrence Livermore National Security, LLC
  * Description:   Input file for SAMRAI CVODE test program 
  *
  ************************************************************************/
@@ -33,9 +33,9 @@ Main {
    uses_preconditioning     = TRUE
 
 // Used for testing only
-   correct_rhs_evals        = 927
-   correct_precond_setups   = 718
-   correct_precond_solves   = 512
+   correct_rhs_evals        = 920
+   correct_precond_setups   = 714
+   correct_precond_solves   = 509
 }
 
 CVODEModel {

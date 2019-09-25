@@ -3,7 +3,7 @@
  * This file is part of the SAMRAI distribution.  For full copyright
  * information, see COPYRIGHT and LICENSE.
  *
- * Copyright:     (c) 1997-2018 Lawrence Livermore National Security, LLC
+ * Copyright:     (c) 1997-2019 Lawrence Livermore National Security, LLC
  * Description:   Wrapper for SNES solver for use in a SAMRAI-based application.
  *
  ************************************************************************/
@@ -28,9 +28,7 @@
 #ifdef OMPI_SKIP_MPICXX
 #undef OMPI_SKIP_MPICXX
 #endif
-extern "C" {
 #include "petscsnes.h"
-}
 #endif
 
 #include "SAMRAI/solv/NonlinearSolverStrategy.h"
@@ -1016,9 +1014,8 @@ private:
    SNESJacobianSet(
       SNES snes,                                      // SNES context
       Vec x,                                          // input vector
-      Mat* A,                                         // Jacobian matrix
-      Mat* B,                                         // precond matrix
-      MatStructure* mstruct,                          // precond matrix structure
+      Mat A,                                          // Jacobian matrix
+      Mat B,                                          // precond matrix
       void* ctx);                                     // user-defined context
 
    static int

@@ -3,7 +3,7 @@
  * This file is part of the SAMRAI distribution.  For full copyright
  * information, see COPYRIGHT and LICENSE.
  *
- * Copyright:     (c) 1997-2018 Lawrence Livermore National Security, LLC
+ * Copyright:     (c) 1997-2019 Lawrence Livermore National Security, LLC
  * Description:   Interface to C++ vector implementation for PETSc package.
  *
  ************************************************************************/
@@ -35,6 +35,16 @@
 #undef OMPI_SKIP_MPICXX
 #endif
 #include "petscvec.h"
+#endif
+#ifndef included_petsc_vecimpl
+#define included_petsc_vecimpl
+#ifdef MPICH_SKIP_MPICXX
+#undef MPICH_SKIP_MPICXX
+#endif
+#ifdef OMPI_SKIP_MPICXX
+#undef OMPI_SKIP_MPICXX
+#endif
+#include "petsc/private/vecimpl.h"
 #endif
 
 namespace SAMRAI {
@@ -744,6 +754,7 @@ private:
 
    static PetscErrorCode
    vecSetFromOptions(
+      PetscOptionItems* options,
       Vec vec);
 
    static PetscErrorCode

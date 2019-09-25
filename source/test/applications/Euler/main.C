@@ -3,7 +3,7 @@
  * This file is part of the SAMRAI distribution.  For full copyright
  * information, see COPYRIGHT and LICENSE.
  *
- * Copyright:     (c) 1997-2018 Lawrence Livermore National Security, LLC
+ * Copyright:     (c) 1997-2019 Lawrence Livermore National Security, LLC
  * Description:   Main program for SAMRAI Euler gas dynamics sample application
  *
  ************************************************************************/
@@ -370,7 +370,7 @@ int main(
          }
       }
 
-#if (TESTING == 1) && !(HAVE_HDF5)
+#if (TESTING == 1) && !defined(HAVE_HDF5)
       /*
        * If we are autotesting on a system w/o HDF5, the read from
        * restart will result in an error.  We want this to happen

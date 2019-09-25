@@ -3,7 +3,7 @@
  * This file is part of the SAMRAI distribution.  For full copyright
  * information, see COPYRIGHT and LICENSE.
  *
- * Copyright:     (c) 1997-2018 Lawrence Livermore National Security, LLC
+ * Copyright:     (c) 1997-2019 Lawrence Livermore National Security, LLC
  * Description:   Interface to C++ vector implementation for PETSc package.
  *
  ************************************************************************/
@@ -977,8 +977,10 @@ PETScAbstractVectorReal<TYPE>::vecResetArray(
 template<class TYPE>
 PetscErrorCode
 PETScAbstractVectorReal<TYPE>::vecSetFromOptions(
+   PetscOptionItems* options,
    Vec vec)
 {
+   NULL_USE(options);
    NULL_USE(vec);
    TBOX_ERROR(
       "PETScAbstractVectorReal<TYPE>::vecSetFromOptions() unimplemented"

@@ -3,7 +3,7 @@
  * This file is part of the SAMRAI distribution.  For full copyright
  * information, see COPYRIGHT and LICENSE.
  *
- * Copyright:     (c) 1997-2018 Lawrence Livermore National Security, LLC
+ * Copyright:     (c) 1997-2019 Lawrence Livermore National Security, LLC
  * Description:   Class containing numerical routines for modified Bratu problem
  *
  ************************************************************************/
@@ -1057,15 +1057,11 @@ int ModifiedBratuProblem::precondSetup(
    solv::SundialsAbstractVector* soln_scale,
    solv::SundialsAbstractVector* fval,
    solv::SundialsAbstractVector* fval_scale,
-   solv::SundialsAbstractVector* vtemp1,
-   solv::SundialsAbstractVector* vtemp2,
    int& num_feval)
 {
    NULL_USE(soln_scale);
    NULL_USE(fval);
    NULL_USE(fval_scale);
-   NULL_USE(vtemp1);
-   NULL_USE(vtemp2);
 
    TBOX_ASSERT(soln != 0);
 
@@ -1085,14 +1081,12 @@ int ModifiedBratuProblem::precondSolve(
    solv::SundialsAbstractVector* fval,
    solv::SundialsAbstractVector* fval_scale,
    solv::SundialsAbstractVector* rhs,
-   solv::SundialsAbstractVector* vtemp,
    int& num_feval)
 {
    NULL_USE(soln);
    NULL_USE(soln_scale);
    NULL_USE(fval);
    NULL_USE(fval_scale);
-   NULL_USE(vtemp);
 
    TBOX_ASSERT(rhs != 0);
 

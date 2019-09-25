@@ -3,7 +3,7 @@
  * This file is part of the SAMRAI distribution.  For full copyright
  * information, see COPYRIGHT and LICENSE.
  *
- * Copyright:     (c) 1997-2018 Lawrence Livermore National Security, LLC
+ * Copyright:     (c) 1997-2019 Lawrence Livermore National Security, LLC
  * Description:   Refine schedule for data transfer between AMR levels
  *
  ************************************************************************/
@@ -1630,7 +1630,6 @@ RefineSchedule::createCoarseInterpPatchLevel(
       *hiercoarse_level->getBoxLevel());
 
    const hier::IntVector& zero_vec(hier::IntVector::getZero(dim));
-   const hier::IntVector& one_vec(hier::IntVector::getOne(dim));
 
    /*
     * To compute coarse_interp<==>hiercoarse, we will perform this bridge:
@@ -1751,8 +1750,39 @@ RefineSchedule::createCoarseInterpPatchLevel(
       const hier::IntVector& src_to_dst_width =
          dst_to_src.getTranspose().getConnectorWidth();
       const hier::IntVector& dst_to_src_width = dst_to_src.getConnectorWidth();
-      if (src_to_dst_width > zero_vec &&
-          dst_to_src_width > zero_vec) {
+
+      bool do_simple_bridge;
+      if (src_to_dst_width > zero_vec && dst_to_src_width > zero_vec) {
+         do_simple_bridge = true;
+      } else if (d_dst_level->getGridGeometry()->getNumberBlocks() == 1 &&
+                 src_to_dst_width != zero_vec &&
+                 dst_to_src_width != zero_vec) {
+         /*
+          * If a single-block domain is flat (width 1) in a direction with
+          * zero connector width, we can still do the simple bridge for
+          * bridged_dst_to_hiercoarse.
+          */ 
+         do_simple_bridge = true;
+         hier::BoxContainer phys_domain(
+            d_dst_level->getGridGeometry()->getPhysicalDomain());
+         hier::Box bounding_box(phys_domain.getBoundingBox());
+         hier::IntVector domain_size(bounding_box.numberCells());
+         for (unsigned int d = 0; d < dim.getValue(); ++d) {
+            if (src_to_dst_width[d] == 0 && domain_size[d] != 1) {
+               do_simple_bridge = false;
+            }
+            if (dst_to_src_width[d] == 0 && domain_size[d] != 1) {
+               do_simple_bridge = false;
+            }
+            if (!do_simple_bridge) {
+               break;
+            }
+         }
+      } else {
+         do_simple_bridge = false;
+      }
+      
+      if (do_simple_bridge) {
 
          if (s_barrier_and_time) {
             t_bridge_dst_hiercoarse->barrierAndStart();

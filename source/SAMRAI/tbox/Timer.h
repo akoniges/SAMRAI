@@ -3,7 +3,7 @@
  * This file is part of the SAMRAI distribution.  For full copyright
  * information, see COPYRIGHT and LICENSE.
  *
- * Copyright:     (c) 1997-2018 Lawrence Livermore National Security, LLC
+ * Copyright:     (c) 1997-2019 Lawrence Livermore National Security, LLC
  * Description:   Timer class to track elapsed time in portions of a program.
  *
  ************************************************************************/
@@ -19,12 +19,6 @@
 #include <string>
 #include <vector>
 #include <memory>
-
-#ifdef HAVE_TAU
-#if (PROFILING_ON || TRACING_ON)
-#include "Profile/Profiler.h"
-#endif
-#endif
 
 namespace SAMRAI {
 namespace tbox {
@@ -422,15 +416,6 @@ private:
     * Static integer constant describing this class's version number.
     */
    static const int TBOX_TIMER_VERSION;
-
-   /*
-    * Objects used for performance analysis with TAU.  The "tautimer" mapping
-    * object is a tau timer that is associated with this SAMRAI timer.
-    */
-#ifdef HAVE_TAU
-   TAU_MAPPING_OBJECT(tautimer)
-#endif
-
 };
 
 }

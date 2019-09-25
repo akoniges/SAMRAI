@@ -3,7 +3,7 @@
  * This file is part of the SAMRAI distribution.  For full copyright
  * information, see COPYRIGHT and LICENSE.
  *
- * Copyright:     (c) 1997-2018 Lawrence Livermore National Security, LLC
+ * Copyright:     (c) 1997-2019 Lawrence Livermore National Security, LLC
  * Description:   Interface to user functions for SAMRAI-based PETSc SNES context
  *
  ************************************************************************/
@@ -28,9 +28,7 @@
 #undef OMPI_SKIP_MPICXX
 #endif
 
-extern "C" {
 #include "petscsnes.h"
-}
 #endif
 
 #ifdef REQUIRES_CMATH
